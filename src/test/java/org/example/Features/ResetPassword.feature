@@ -5,6 +5,7 @@ Given user is on password reset page
 When user enter <username>
 And click on Reset Password
 Then user is navigated to the successful password reset page
+And close_browser
 
 Examples:
 |username|
