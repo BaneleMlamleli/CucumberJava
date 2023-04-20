@@ -1,21 +1,19 @@
 package org.example.StepDefinition;
 
+import org.example.Core.BrowserDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.FindBy;
 
-import io.cucumber.core.backend.Options;
 import io.cucumber.java.en.*;
 
 
 public class LoginSteps {
 
     WebDriver driver = null;
+    BrowserDriver browserDriver = new BrowserDriver();
     FirefoxOptions options = new FirefoxOptions();
 
     @FindBy(xpath = "//button[@type='submit']")
@@ -29,17 +27,7 @@ public class LoginSteps {
 
     @Given("browser is open")
     public void browser_is_open() {
-        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\org\\example\\Drivers\\chromedriver.exe");
-        driver = new ChromeDriver();
-
-        //System.setProperty("webdriver.gecko.driver", "src\\test\\java\\org\\example\\Drivers\\geckodriver.exe");
-        // Because Firefox was not installed in its defautl path I've to explicity define where to find the firefox binary file.
-        //options.setBinary("C:\\Users\\BaneleMlamleli\\AppData\\Local\\Mozilla Firefox\\firefox.exe");
-        //driver = new FirefoxDriver(options);
-
-        //System.setProperty("webdriver.edge.driver", "src\\test\\java\\org\\example\\Drivers\\msedgedriver.exe");
-        //driver = new EdgeDriver(); 
-
+        browserDriver.initialiseWebDriver();
         driver.manage().window().maximize();
     }
 
