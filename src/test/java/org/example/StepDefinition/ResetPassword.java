@@ -3,10 +3,12 @@ package org.example.StepDefinition;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.example.Core.BrowserDriver;
 import org.openqa.selenium.*;
 
+import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 
 import org.example.Core.BrowserDriver.*;
@@ -14,25 +16,22 @@ import org.example.Core.BrowserDriver.*;
 public class ResetPassword {
     WebDriver driver = null;
 
-    @Before(order = 1)
-    public void initialExecusion() {
-        setUpSeleniumDriver();
-        initialise
-    }
+    // @Before(order = 1)
+    // public void initialExecusion() {
+    //     BrowserDriver.initializePageObjects();
+    //     BrowserDriver.setUpSeleniumDriver();
+    // }
 
     @Given("user is on password reset page")
     public void user_is_on_password_reset_page() {
-        //System.setProperty("webdriver.chrome.driver", "src\\test\\java\\org\\example\\Drivers\\chromedriver.exe");
-        //driver = new ChromeDriver();
-        System.setProperty("","src\\test\\java\\org\\example\\Drivers\\geckodriver.exe");
-        driver = new FirefoxDriver();
-        driver.manage().window().maximize();
+        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\org\\example\\Drivers\\chromedriver.exe");
+        driver = new ChromeDriver();
+        // System.setProperty("webdriver.msedgedriver.driver","src\\test\\java\\org\\example\\Drivers\\msedgedriver.exe");
+        //driver = new EdgeDriver();
+        //System.setProperty("webdriver.firefox.driver","src\\test\\java\\org\\example\\Drivers\\geckodriver.exe");
+        //driver = new FirefoxDriver();
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode");
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        driver.manage().window().maximize();
     }
 
     @When ("user enter .*")
@@ -53,6 +52,8 @@ public class ResetPassword {
 
     @And ("close browser")
     public void close_browser() {
-        closeBrowser();
+        driver.quit();
+        driver.close();
+        //BrowserDriver.closeBrowser();
     }
 }
