@@ -3,24 +3,11 @@ package org.example.StepDefinition;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.example.Core.BrowserDriver;
 import org.openqa.selenium.*;
-
-import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
-
-import org.example.Core.BrowserDriver.*;
 
 public class ResetPassword {
     WebDriver driver = null;
-
-    // @Before(order = 1)
-    // public void initialExecusion() {
-    //     BrowserDriver.initializePageObjects();
-    //     BrowserDriver.setUpSeleniumDriver();
-    // }
 
     @Given("user is on password reset page")
     public void user_is_on_password_reset_page() {
@@ -31,13 +18,19 @@ public class ResetPassword {
         //System.setProperty("webdriver.firefox.driver","src\\test\\java\\org\\example\\Drivers\\geckodriver.exe");
         //driver = new FirefoxDriver();
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/web/index.php/auth/requestPasswordResetCode");
+        try{
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         driver.manage().window().maximize();
     }
 
-    @When ("user enter .*")
+    @When ("^user enter (.*)$")
     public void user_enter_username(String username) {
         //driver.findElement(By.xpath(txtUsername)).sendKeys(username);
         driver.findElement(By.xpath("//input[@name='username']")).sendKeys(username);
+        //driver.findElement(By.xpath("//input[@placeholder='Username']")).sendKeys(username);
     }
     
     @And ("click on Reset Password")
@@ -54,6 +47,5 @@ public class ResetPassword {
     public void close_browser() {
         driver.quit();
         driver.close();
-        //BrowserDriver.closeBrowser();
     }
 }

@@ -11,3 +11,4 @@ monochrome = true, plugin = {"pretty", "html:target/HtmlReports.html", "json:tar
 public class TestRunnerClass {
     //xxx
 }
+
