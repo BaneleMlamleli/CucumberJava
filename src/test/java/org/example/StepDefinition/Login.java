@@ -12,7 +12,7 @@ import org.openqa.selenium.support.FindBy;
 import io.cucumber.java.en.*;
 
 
-public class LoginSteps {
+public class Login {
 
     WebDriver driver = null;
     BrowserDriver browserDriver = new BrowserDriver();
