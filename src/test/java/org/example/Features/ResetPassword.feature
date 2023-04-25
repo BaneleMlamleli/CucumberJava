@@ -9,4 +9,5 @@ And close_browser
 
 Examples:
 |username|
+|user1|
 |Admin|

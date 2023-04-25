@@ -4,13 +4,15 @@ import org.example.Core.BrowserDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.FindBy;
 
 import io.cucumber.java.en.*;
 
 
-public class LoginSteps {
+public class Login {
 
     WebDriver driver = null;
     BrowserDriver browserDriver = new BrowserDriver();
@@ -27,7 +29,14 @@ public class LoginSteps {
 
     @Given("browser is open")
     public void browser_is_open() {
-        browserDriver.initialiseWebDriver();
+        //BrowserDriver.initializePageObjects();
+        //browserDriver.initialiseWebDriver();
+        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\org\\example\\Drivers\\chromedriver.exe");
+        driver = new ChromeDriver();
+        // System.setProperty("webdriver.msedgedriver.driver","src\\test\\java\\org\\example\\Drivers\\msedgedriver.exe");
+        //driver = new EdgeDriver();
+        //System.setProperty("webdriver.firefox.driver","src\\test\\java\\org\\example\\Drivers\\geckodriver.exe");
+        //driver = new FirefoxDriver();
         driver.manage().window().maximize();
     }
 
