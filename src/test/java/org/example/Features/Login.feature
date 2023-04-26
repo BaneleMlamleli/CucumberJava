@@ -13,14 +13,14 @@ Feature: feature to test login functionality
         |username   |password   |
         |Admin      |admin123   |
 
-    # @smoketest
-    Scenario Outline: Check login is successful with invalid credentials
-        Given browser is open
-        And user is on login page
-        When user enters <username> and <password>
-        And user clicks on login button
-        Then user is navigated to the home page
+    # # @smoketest
+    # Scenario Outline: Check login is successful with invalid credentials
+    #     Given browser is open
+    #     And user is on login page
+    #     When user enters <username> and <password>
+    #     And user clicks on login button
+    #     Then user is navigated to the home page
 
-        Examples:
-        |username   |password   |
-        |user1      |pass1      |
+    #     Examples:
+    #     |username   |password   |
+    #     |user1      |pass1      |

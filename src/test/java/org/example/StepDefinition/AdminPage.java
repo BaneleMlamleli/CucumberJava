@@ -10,43 +10,31 @@ import io.cucumber.java.en.*;
 
 public class AdminPage {
 
-    //i[@class='oxd-icon bi-chevron-left']
-    //i[@class='oxd-icon bi-chevron-right']
-    //i[@class='oxd-icon bi-list oxd-topbar-header-hamburger']
-    //*[@id="oxd-toaster_1"]
-    //p[@class='oxd-text oxd-text--p oxd-text--toast-title oxd-toast-content-text']   
-
     WebDriver driver = null;
 
-    @FindBy(xpath = "//p[@class='oxd-text oxd-text--p oxd-text--toast-title oxd-toast-content-text']")
-    private WebElement successToasterMessageBoxElement;
-
-    @Given("user is on the admin page")
+    @And("user is on the admin page")
     public void user_is_on_the_admin_page() {
-        System.setProperty("webdriver.chrome.driver", "src\\test\\java\\org\\example\\Drivers\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index");
         try {
             Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        driver.findElement(By.xpath("//button[normalize-space()='Add']")).click();
+        driver.findElement(By.xpath("//a[@class='oxd-main-menu-item active']")).click();
         driver.manage().window().maximize();
-    }
-
-    @And("user click on the Admin button")
-    public void user_clicks_on_the_Add_button() {
-        driver.findElement(By.xpath("//a[@class='oxd-main-menu-item active toggle']//span[1]")).click();
-        //a[@class='oxd-main-menu-item active toggle']
     }
     
     @And("user clicks on Add button")
     public void user_clicks_on_Add_button() {
-        System.out.println("And");
+        try {
+            Thread.sleep(2000); 
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        // driver.findElement(By.xpath("//button[normalize-space()='Add']")).click();
+        driver.findElement(By.xpath("//button[text()=' Add ']")).click();
     }
     
-    @When("^user select user role (.*)")
+    @And("^user select user role (.*)")
     public void user_select_user_role(String userRole) {
         System.out.println("When");
     }
@@ -71,7 +59,7 @@ public class AdminPage {
         System.out.println("And");
     }
     
-    @Then("click on Save button")
+    @And("click on Save button")
     public void click_on_Save_button() {
         System.out.println("Then");
     }
