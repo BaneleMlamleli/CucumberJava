@@ -71,4 +71,3 @@ public class Login {
         driver.findElement(By.xpath("//span[normalize-space()='Admin']")).click();
     }
 }
-
